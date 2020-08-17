@@ -1,0 +1,7 @@
+<div>
+  <h5>Commented by <%= comment.author_name %></h5>
+  <p class="comment"><%= comment.body %></p>
+  <p style="font-size: 0.7em; text-align: right;">
+    (<%= distance_of_time_in_words_to_now(comment.created_at) %> later)
+  </p>
+</div>
