@@ -17,16 +17,17 @@
   (Posted <%= distance_of_time_in_words_to_now(@article.created_at) %> later)
 </p>
 <br>
-<p style="text-align: right">
-  <%= link_to 'Edit', edit_article_path(@article) %>
-  <%= link_to 'Delete', article_path(@article), method: :delete, data: {confirm: "Are you sure to delete #{@article.title}?"} %>
-</p>
-<br>
-<br>
+<% if logged_in? %>
+  <p style="text-align: right">
+    <%= link_to 'Edit', edit_article_path(@article) %>
+    <%= link_to 'Delete', article_path(@article), method: :delete, data: {confirm: "Are you sure to delete #{@article.title}?"} %>
+  </p>
+<% end %>
 
+<br>
+<br>
 <h3>Comments (<%= @article.comments.size %>):</h3>
 <%= render partial: 'articles/comment', collection: @article.comments %>
 <%= render partial: 'comments/form' %>
 <br><br>
-
 <%= link_to 'Back to Articles', articles_path %>

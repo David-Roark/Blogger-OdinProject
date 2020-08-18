@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+  before_action :require_login, only: [:create, :destroy, :edit, :update]
   include ArticlesHelper
 
   def index
@@ -16,11 +17,18 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
-    @article.save
 
-    flash.notice = "Article '#{@article.title}' was created!"
+    if @article.title.present? && @article.body.present?
+      @article.save
+      flash.notice = "Article '#{@article.title}' was created!"
 
-    redirect_to article_path(@article)
+      redirect_to article_path(@article)
+    else
+      flash.notice = "Title or body can't be blank!"
+
+      render 'new'
+    end
+
   end
 
   def destroy

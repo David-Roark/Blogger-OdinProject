@@ -1,2 +1,6 @@
 <h1>Create a New Article</h1>
-<%= render partial: 'form' %>
+<% if logged_in? %>
+  <%= render partial: 'form' %>
+<% else %>
+  <p>Login for create a new article</p>
+<% end %>
