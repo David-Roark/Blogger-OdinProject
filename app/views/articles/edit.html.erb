@@ -1,7 +1,7 @@
 <h1>Edit Article</h1>
 <% if logged_in? %>
   <%= render partial: 'form' %>
-  <%= link_to 'Back to Articles', articles_path %>
+  <%= link_to 'Back', article_path %>
 <% else %>
   <p>Login to edit article</p>
 <% end %>

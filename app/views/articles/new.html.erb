@@ -1,6 +1,7 @@
 <h1>Create a New Article</h1>
 <% if logged_in? %>
   <%= render partial: 'form' %>
+  <%= link_to "Back", articles_path %>
 <% else %>
   <p>Login for create a new article</p>
 <% end %>

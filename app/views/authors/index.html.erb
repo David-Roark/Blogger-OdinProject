@@ -21,9 +21,15 @@
           <td><%= author.email %></td>
           <td><%= author.password %></td>
           <td><%= author.password_confirmation %></td>
-          <td><%= link_to 'Show', author %></td>
-          <td><%= link_to 'Edit', edit_author_path(author) %></td>
-          <td><%= link_to 'Destroy', author, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% if author.id == 1 %>
+            <td>Protected!</td>
+            <td></td>
+            <td></td>
+          <% else %>
+            <td><%= link_to 'Show', author %></td>
+            <td><%= link_to 'Edit', edit_author_path(author) %></td>
+            <td><%= link_to 'Destroy', author, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
         </tr>
       <% end %>
     </tbody>
